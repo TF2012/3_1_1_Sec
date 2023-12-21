@@ -27,13 +27,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Optional<User> getById(Long id) {
         return userRepository.findById(id);
     }
 
-    @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Optional<User> getByIdForUpdate(Long id) {
         Optional<User> user = getById(id);
         if (user.isEmpty()) {
